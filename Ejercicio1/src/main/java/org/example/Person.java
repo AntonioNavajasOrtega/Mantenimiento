@@ -11,19 +11,32 @@ public class Person {
 
     public Person(String name,int age,String gender)
     {
+        if(name == null || name.length() > 50)
+        {
+            throw new IllegalArgumentException("Name field cannot be null or bigger than 50 characters.");
+        }
+        if(age < 0 || age > 120)
+        {
+            throw new IllegalArgumentException("Age field cannot be negative or bigger than 120");
+        }
+        if(!gender.equals("Male") && !gender.equals("Female"))
+        {
+            throw new IllegalArgumentException("Gender field must be either Male or Female.");
+        }
+
         this.name = name;
         this.age = age;
         this.gender = gender;
     }
 
-    public String name()
+    public String getName()
     {
         return name;
     }
-    public int age(){
+    public int getAge(){
         return age;
     }
-    public String gender()
+    public String getGender()
     {
         return gender;
     }
@@ -35,17 +48,39 @@ public class Person {
         double sumFemale = 0;
         double cont1 = 0;
         double cont2 = 0;
-        for (Person p : persons) {
-            if (p.gender.equals("Male")) {
-                sumMale += p.age;
-                cont1++;
-            } else {
-                sumFemale += p.age;
-                cont2++;
+        res[0] = -1;
+        res[1] = -1;
+
+        if(persons.size() != 0)
+        {
+            for (Person p : persons) {
+                if(p != null) // Si vale null lo saltamos
+                {
+                    if (p.gender.equals("Male")) {
+                        sumMale += p.age;
+                        cont1++;
+                    } else if (p.gender.equals("Female")) {
+                        sumFemale += p.age;
+                        cont2++;
+                    } else {
+                        // Ignoramos si gender vale otra cosa
+                    }
+                }
+
             }
         }
-        res[0] = sumMale / cont1;
-        res[1] = sumFemale / cont2;
+
+        if(cont1 > 0)
+        {
+            res[0] = sumMale / cont1;
+        }
+        if(cont2 > 0)
+        {
+            res[1] = sumFemale / cont2;
+        }
+
+
+
         return res;
     }
 
