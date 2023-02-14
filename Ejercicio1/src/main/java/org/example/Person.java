@@ -13,15 +13,15 @@ public class Person {
     {
         if(name == null || name.length() > 50)
         {
-            throw new IllegalArgumentException("Name field cannot be null or bigger than 50 characters.");
+            throw new NameException("Name field cannot be null or bigger than 50 characters.");
         }
         if(age < 0 || age > 120)
         {
-            throw new IllegalArgumentException("Age field cannot be negative or bigger than 120");
+            throw new AgeException("Age field cannot be negative or bigger than 120");
         }
         if(!gender.equals("Male") && !gender.equals("Female"))
         {
-            throw new IllegalArgumentException("Gender field must be either Male or Female.");
+            throw new GenderException("Gender field must be either Male or Female.");
         }
 
         this.name = name;
@@ -78,9 +78,6 @@ public class Person {
         {
             res[1] = sumFemale / cont2;
         }
-
-
-
         return res;
     }
 

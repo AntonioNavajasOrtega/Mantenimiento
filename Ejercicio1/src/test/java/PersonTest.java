@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+
 class PersonTest {
     Person person;
     @BeforeEach
@@ -43,6 +44,25 @@ class PersonTest {
         assertEquals(expectedGender,person.getGender());
     }
 
+    @Test
+    void illegalName()
+    {
+        assertThrows(NameException.class, () -> new Person(null,30,"Male"));
+        assertThrows(NameException.class, () -> new Person("AbcdefghijklmnñopqrstuvwxyzAbcdefghijklmnñopqrstuvwxyz",30,"Male"));
+    }
+
+    @Test
+    void illegalAge()
+    {
+        assertThrows(AgeException.class, () -> new Person("Javier",-1,"Male"));
+        assertThrows(AgeException.class, () -> new Person("Javier",123,"Male"));
+    }
+
+    @Test
+    void illegalGender()
+    {
+        assertThrows(GenderException.class, () -> new Person("Javier",30,"Malea"));
+    }
 
     @Test
     void agePerGenderTest1Male0Female()
