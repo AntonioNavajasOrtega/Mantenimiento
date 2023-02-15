@@ -19,7 +19,7 @@ public class Person {
         {
             throw new AgeException("Age field cannot be negative or bigger than 120");
         }
-        if(!gender.equals("Male") && !gender.equals("Female"))
+        if(!gender.equals("Male") && !gender.equals("Female")) // En este caso no vamos a ignorar mayúsculas o minúsculas
         {
             throw new GenderException("Gender field must be either Male or Female.");
         }
@@ -48,6 +48,7 @@ public class Person {
         double sumFemale = 0;
         double cont1 = 0;
         double cont2 = 0;
+        // Si no tenemos Male o Female para evaluar, uso el valor -1.
         res[0] = -1;
         res[1] = -1;
 

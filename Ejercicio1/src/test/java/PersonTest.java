@@ -106,6 +106,24 @@ class PersonTest {
         double [] expectedRes = {39.75,32.5};
         assertArrayEquals(expectedRes,person.averageAgePerGender(persons));
     }
+    @Test
+    void agePerGenderTestMaleFemaleWithNull()
+    {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("Nerea",30,"Female"));
+        persons.add(new Person("Javier",30,"Male"));
+        persons.add(new Person("María",47,"Female"));
+        persons.add(null);
+        persons.add(new Person("Alejandro",28,"Male"));
+        persons.add(new Person("Adriana",18,"Female"));
+        persons.add(new Person("Carlos",52,"Male"));
+        persons.add(new Person("Marta",35,"Female"));
+        persons.add(new Person("Sergio",49,"Male"));
+        persons.add(null);
+        double [] expectedRes = {39.75,32.5};
+        assertArrayEquals(expectedRes,person.averageAgePerGender(persons));
+    }
+
 
 
 }
